@@ -8,7 +8,7 @@ Starting point for backbone/marionette projects.
 - Built in router with the a home page route.
 
 Using it
-========
+--------
 
 js/requiremain.js
 - Dependencies
