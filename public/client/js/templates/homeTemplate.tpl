@@ -1,2 +1,2 @@
 <!-- Home Template -->
-Welcome to Restoration Media
+Enjoy this Marionette Skeleton
