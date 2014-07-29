@@ -1,0 +1,65 @@
+console.log('Home Controller js loaded!');
+define(['marionette',
+                'modules/models/search',
+                'modules/models/unsub',
+                'modules/search/searchView',
+                'modules/sidenavView',
+                'modules/pageview',
+                'typeahead',
+                'jsonp',
+                'placeholder'],
+                function(Marionette, Search, Unsub, Searchview, Sidenav, Pageview) {
+	var Controller = Marionette.Controller.extend({
+		initialize: function(options) {
+                        // Save options values into scope of the Controller.
+                        this.app = options.app;
+                        // User Model
+                        this.userModel = options.model;
+                        this.Layout = this.Layout || {};
+                        // Search Model
+                        this.searchModel = new Search.Model();
+                        console.log('search model', this.searchModel);
+                        // Results Collection
+                        this.results = new Search.Results();
+                        // Unsub Model
+                        this.unsubModel = new Unsub.Model();
+			console.log('Home controller Initialized!');
+                },
+		home: function(){
+			require(["util", "domUtil"], function(){
+				utility.dom.change.title();
+			});
+			// Layout Object
+			var Layout = this.Layout,
+			that = this;
+			console.log('About to load home layout!');
+			require(['modules/home/homeLayout'], function(SubApp) {
+				// Layout
+				Layout = {};
+				Layout.homePage = new SubApp.HomePageLayout({
+					app: that.app
+				});
+				that.app.wrapper.show(Layout.homePage);
+
+				Layout.homeUser = new SubApp.HomeUserView({
+					model: that.userModel
+				});
+
+				// Search Bar View
+				Layout.searchView = new Searchview({
+					el: '#searchContent',
+					app: that.app,
+					model: that.searchModel,
+					userModel: that.userModel
+				});
+
+				// Show Views in regions of layout
+				Layout.homePage.user.show(Layout.homeUser);
+			});
+			Pageview.countPageView();
+			console.log('Home method called!');
+	    	}
+	});
+
+	return Controller;
+});
