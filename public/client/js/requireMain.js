@@ -1,37 +1,21 @@
 // js/requireMain.js
 
-// Allow versioning
-var versions = {
-	default: 'v1',
-	v1: true,
-	v2: false
-};
-var query, kv_pair, get, version='v1';
-    query = location.search.substring(1);
-    query = query.split("&");
-    get = {};
-for(var key in query){
-	kv_pair = query[key].split("=");
-	if (typeof kv_pair[0] === "string" && kv_pair[0] === "v" ) {
-		version = 'v'+kv_pair[1];
-	}
-}
 require.config({
 	paths: {
 		// App
-		"app": "app/"+version+"/app",
-		"routes": "app/"+version+"/config/routes",
+		"app": "app/app",
+		"routes": "app/config/routes",
 		// Models
-		"user": "app/"+version+"/models/user",
+		"user": "app/models/user",
 		// Controllers
-		"controller": "app/"+version+"/controller/controller",
-		"homeController": "app/"+version+"/controller/home",
-		"loginController": "app/"+version+"/controller/login",
+		"controller": "app/controller/controller",
+		"homeController": "app/controller/home",
+		"loginController": "app/controller/login",
 		// Views
-		"homeView": "app/"+version+"/library/modules/views/homeView",
-		"footerView": "app/"+version+"/library/modules/views/footerView",
+		"homeView": "app/library/modules/views/homeView",
+		"footerView": "app/library/modules/views/footerView",
 		// Layouts
-		"twoRegionLayout": "app/"+version+"/library/modules/views/twoRegionLayout",
+		"twoRegionLayout": "app/library/modules/views/twoRegionLayout",
 		// libs
 		"jquery": "lib/jquery-1.10.2.min",
 		"underscore": "lib/underscore.min",
@@ -39,14 +23,14 @@ require.config({
 		"marionette": "lib/backbone.marionette.min",
 		// Services
 		// Utilities
-		"util": "app/"+version+"/library/utility/utility",
-		"ajaxUtil": "app/"+version+"/library/utility/ajax",
-		"domUtil": "app/"+version+"/library/utility/dom",
-		"vent": "app/"+version+"/library/utility/vent", // Event Aggrigator
+		"util": "app/library/utility/utility",
+		"ajaxUtil": "app/library/utility/ajax",
+		"domUtil": "app/library/utility/dom",
+		"vent": "app/library/utility/vent", // Event Aggrigator
 		// Templates
 		"tpl": "lib/require/tpl.min",
-		"templates": "app/"+version+"/templates",
-		"templateConfig": "app/"+version+"/templates/config",
+		"templates": "app/templates",
+		"templateConfig": "app/templates/config",
 		// Mobile
 		"fastclick": "lib/fastclick.min",
 		// Client Storage
@@ -85,29 +69,14 @@ require(["marionette", "cookie", "localStorage", "remjs"], function (Marionette)
 		isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|Windows Phone|BlackBerry|Mobile)/);
 	}
 
-	// FASTCLICK
-	if (isMobile) {
-		require(["fastclick"], function(FastClick) {
-			FastClick.attach(document.body);
-		});
-	}
-
-	// View animation.
-	Marionette.Region.prototype.open = function(view){
-		var that = this;
-		$(document).ready(function() {
-			console.log(that.$el.selector);
-			that.$el.hide();
-			that.$el.html(view.el);
-			if ((that.$el.selector === "#modal") || (that.$el.selector === "#header") || (that.$el.selector === "#main-content")) {
-				that.$el.show();
-			} else {
-				that.$el.fadeIn(300);
-			}
-		});
-	};
-
 	require(["app"], function(App) {
+		// FASTCLICK
+		if (isMobile) {
+			require(["fastclick"], function(FastClick) {
+				FastClick.attach(document.body);
+			});
+		}
+
 		App.start();
 		console.log('app started');
 		console.log(App);
