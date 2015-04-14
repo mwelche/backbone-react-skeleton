@@ -5,20 +5,26 @@ require.config({
     // App
     "app": "app/app",
     "routes": "app/config/routes",
+    // npm
+    "npm": "../../node_modules",
     // Models
     "user": "app/models/user",
     // Controllers
-    controller: "app/controller/controller",
-    controllers: "app/controller",
+    "controller": "app/controller/controller",
+    "controllers": "app/controller",
     // Views
-    views: "app/modules/views",
+    "views": "app/modules/views",
     // Layouts
-    twoRegionLayout: "app/modules/layouts/twoRegion",
+    "twoRegionLayout": "app/modules/layouts/twoRegion",
+    // JSX
+    "jsx": "npm/require-jsx/jsx",
     // libs
     "jquery": "lib/jquery.1.11.2.min",
     "underscore": "lib/underscore",
     "backbone": "lib/backbone",
     "marionette": "lib/backbone.marionette",
+    "react": "npm/react/dist/react-with-addons",
+    "JSXTransformer": "npm/react/dist/JSXTransformer"
     // Services
     // Utilities
     "util": "app/library/utility/utility",
@@ -41,6 +47,7 @@ require.config({
     "placeholder": "lib/placeholder.min",
     "remjs": "lib/rem.min"
   },
+
   shim: {
     underscore: {
       exports: '_'
@@ -54,11 +61,19 @@ require.config({
       exports: "Marionette"
     }
   },
-  //urlArgs: "bust=" + (new Date()).getTime()
+
+  jsx: {
+    harmony: true,
+    fileExtension: '.jsx'
+  },
+
+  stubModules: ['jsx', 'text', 'JSXTransformer'],
+
+  urlArgs: "bust=" + (new Date()).getTime()
 });
 
 require(["marionette", "cookie", "localStorage", "remjs"], function (Marionette) {
-  "use strict";
+  "use" + " strict";
   console.log('jquery version: ', $.fn.jquery);
   console.log('underscore identity call: ', _.identity(5));
   console.log('Marionette: ', Marionette);
