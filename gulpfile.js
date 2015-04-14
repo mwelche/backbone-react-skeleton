@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+var del = require('del');
 
 var coffee = require('gulp-coffee');
 var cjsx = require('gulp-cjsx');
@@ -8,6 +9,11 @@ var csso = require('gulp-csso');
 var rework = require('gulp-rework');
 var at2x = require('rework-plugin-at2x');
 var autoprefixer = require('gulp-autoprefixer');
+
+gulp.task('copy', function() {
+  return gulp.src('./dev/')
+    .pipe('copy'r)
+});
 
 gulp.task('coffee', function() {
   // Coffee
@@ -44,4 +50,10 @@ gulp.task('csso', ['autoprefixer'], function() {
     .pipe(gulp.dest('./public/css/'));
 });
 
-gulp.task('default', ['coffee', 'cjsx', 'reworkcss', 'autoprefixer', 'csso'])
+gulp.task('clean', function(cb) {
+  del(['public/'], cb);
+});
+
+gulp.task('default', ['clean'], function() {
+  gulp.start('coffee', 'cjsx', 'csso');
+});
