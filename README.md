@@ -2,7 +2,7 @@
 
 *created by: [mwelche](https://github.com/mwelche) (Mathieu Welche) & [jissjohn](https://github.com/jissjohn) (Jiss John)*
 
-Zipfworks presents: a starting point for backbone/react projects with require.js.
+A starting point for backbone/react projects with require.js.
 
 
 ## Using it
