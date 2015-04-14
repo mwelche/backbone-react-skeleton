@@ -5,47 +5,56 @@ require.config({
     // App
     "app": "app/app",
     "routes": "app/config/routes",
-    // npm
-    "npm": "../../node_modules",
+
     // Models
     "user": "app/models/user",
+
     // Controllers
     "controller": "app/controller/controller",
     "controllers": "app/controller",
+
     // Views
     "views": "app/modules/views",
+
     // Layouts
     "twoRegionLayout": "app/modules/layouts/twoRegion",
+
     // JSX
-    "jsx": "npm/require-jsx/jsx",
-    // libs
-    "jquery": "lib/jquery.1.11.2.min",
-    "underscore": "lib/underscore",
-    "backbone": "lib/backbone",
-    "marionette": "lib/backbone.marionette",
-    "react": "npm/react/dist/react-with-addons",
-    "JSXTransformer": "npm/react/dist/JSXTransformer"
+    "jsx": "../../node_modules/require-jsx/jsx",
+
+    // App dependencies
+    "jquery": "../../node_modules/jquery/dist/jquery",
+    "underscore": "../../node_modules/underscore/underscore",
+    "backbone": "../../node_modules/backbone/backbone",
+    "marionette": "../../node_modules/backbone.marionette/lib/backbone.marionette",
+    "react": "../../node_modules/react/dist/react-with-addons",
+    "JSXTransformer": "../../node_modules/react/dist/JSXTransformer",
+
     // Services
     // Utilities
     "util": "app/library/utility/utility",
     "ajaxUtil": "app/library/utility/ajax",
     "domUtil": "app/library/utility/dom",
     "vent": "app/library/utility/vent", // Event Aggrigator
+
     // Templates
     "tpl": "lib/require/tpl.min",
     "templates": "app/templates",
     "templateConfig": "app/templates/config",
+
     // Mobile
     "fastclick": "lib/fastclick.min",
+
     // Client Storage
     "localStorage": "lib/backbone.localStorage.min",
-    "cookie": "lib/jquery.cookie",
+    "cookie": "../../node_modules/jquery.cookie/jquery.cookie",
+
     // Async Modules
     "async": "lib/require/async",
-    "jsonp": "lib/jquery.jsonp",
+
     // IE8 support
-    "placeholder": "lib/placeholder.min",
-    "remjs": "lib/rem.min"
+    "placeholder": "../../node_modules/jquery.placeholder/jquery.placeholder",
+    "remjs": "../../bower_components/REM-unit-polyfill/js/rem"
   },
 
   shim: {
