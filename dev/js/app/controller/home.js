@@ -1,5 +1,7 @@
+// app/controller/home.js
+
 console.log('Home Controller js loaded!');
-define('homeController', ['twoRegionLayout', 'homeView', 'footerView'], function(Layout, Home, Footer) {
+define(['twoRegionLayout', 'views/home', 'views/footer'], function(Layout, Home, Footer) {
 	return function() {
 		// require(["util", "domUtil"], function(){
 			// utility.dom.change.title();
