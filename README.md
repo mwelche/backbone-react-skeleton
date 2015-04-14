@@ -12,7 +12,7 @@ After cloning this repository:
 1. npm install
 2. bower install
 3. (for livereload) install the Chrome livereload extension [here](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en)
-4. gulp
+4. gulp watch
 
 
 More usage details coming soon...
